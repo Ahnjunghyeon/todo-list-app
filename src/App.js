@@ -30,10 +30,25 @@ const TodoItemInputField = (props) => {
   );
 };
 
+// 현재까지 추가된 TodoItem리스트를 받아오기 위해서 Props를 이용해서 다른 컴포넌트에서 받아와야 함.
+const TodoItemList = (props) => {
+  // map 새로운 배열을 받아오는 데 사용
+  const todoList = props.TodoItemList.map((todoItem, index) => {
+    return <li key={index}>{todoItem.todoItemCOntent}</li>;
+  });
+  return <div></div>;
+};
+
 function App() {
   return (
     <div className="App">
-      <TodoItemInputField onSubmit={() => {}} />
+      <TodoItemInputField
+        onSubmit={(input) => {
+          console.log(input);
+        }}
+      />
+      {/* 해당부분부터 다시하기 */}
+      <TodoItemList todoItemList={[{}]} />
     </div>
   );
 }
